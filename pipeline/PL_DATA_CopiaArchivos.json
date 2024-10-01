@@ -91,6 +91,22 @@
 					},
 					"traceLevel": "Fine"
 				}
+			},
+			{
+				"name": "Espera01",
+				"type": "Wait",
+				"dependsOn": [
+					{
+						"activity": "DF_TRAN_Movies",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 1
+				}
 			}
 		],
 		"folder": {
