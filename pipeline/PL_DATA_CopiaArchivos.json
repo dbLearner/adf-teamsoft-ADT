@@ -93,7 +93,7 @@
 				}
 			},
 			{
-				"name": "Wait1",
+				"name": "Espera01",
 				"type": "Wait",
 				"dependsOn": [
 					{
