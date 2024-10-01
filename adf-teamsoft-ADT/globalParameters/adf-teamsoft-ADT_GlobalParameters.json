@@ -1,0 +1,6 @@
+{
+	"NomServidor": {
+		"type": "string",
+		"value": "academy-sqlsrv.database.windows.net"
+	}
+}
