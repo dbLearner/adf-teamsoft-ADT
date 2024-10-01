@@ -1,0 +1,103 @@
+{
+	"name": "PL_ORQ_Ingesta_AW",
+	"properties": {
+		"activities": [
+			{
+				"name": "Ventas Mst",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_AW_ASQL_to_ADLS",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"Grupo": "Venta-Mst"
+					}
+				}
+			},
+			{
+				"name": "Ventas Trn",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Ventas Mst",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_AW_ASQL_to_ADLS",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"Grupo": "Venta-Trn"
+					}
+				}
+			},
+			{
+				"name": "Execute Pipeline3",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_AW_ASQL_to_ADLS",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"Grupo": "Compa-Mst"
+					}
+				}
+			},
+			{
+				"name": "Execute Pipeline4",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Execute Pipeline3",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_AW_ASQL_to_ADLS",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"Grupo": "Compra-Trn"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "Módulo 05"
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-09-28T15:43:08Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

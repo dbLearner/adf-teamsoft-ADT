@@ -1,0 +1,17 @@
+{
+	"name": "adf-teamsoft-ADT",
+	"properties": {
+		"globalParameters": {
+			"NomServidor": {
+				"type": "string",
+				"value": "academy-sqlsrv.database.windows.net"
+			}
+		}
+	},
+	"location": "brazilsouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "131fb2e5-6e16-4831-988a-397ef666bb47",
+		"tenantId": "9d524a39-30ac-4a41-9e2f-dd2563dbc78f"
+	}
+}
